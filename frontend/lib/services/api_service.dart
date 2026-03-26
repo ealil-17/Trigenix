@@ -3,7 +3,7 @@ import 'package:http_parser/http_parser.dart';
 
 class ApiService {
   final Dio _dio = Dio(BaseOptions(
-    baseUrl: 'https://sna.selfmade.fun/Trigenix/Backend',
+    baseUrl: 'https://sna.selfmade.fun/Trigenix',
     connectTimeout: const Duration(seconds: 10),
     receiveTimeout: const Duration(seconds: 10),
   ));
