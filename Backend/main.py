@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import io
 import os
+from pydantic import BaseModel
 
 app = FastAPI(
     title="Arrhythmia Risk Prediction API",
@@ -11,8 +12,13 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Load the trained model
-MODEL_PATH = os.path.join(os.path.dirname(__file__), "arrhythmia_rf_model.pkl")
+# Load the trained model (fixed path assuming this is in Backend/main.py)
+MODEL_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "model", "arrhythmia_rf_model.pkl")
+
+# Login Request Schema
+class LoginRequest(BaseModel):
+    email: str
+    password: str
 
 try:
     model = joblib.load(MODEL_PATH)
@@ -24,6 +30,22 @@ except Exception as e:
 @app.get("/")
 def read_root():
     return {"message": "Welcome to the Arrhythmia Risk Prediction API"}
+
+@app.post("/login/doctor")
+async def login_doctor(credentials: LoginRequest):
+    # TODO: Implement real database validation
+    if credentials.email == "doctor@test.com" and credentials.password == "password":
+        return {"message": "Login successful", "role": "doctor", "email": credentials.email}
+    else:
+        raise HTTPException(status_code=401, detail="Invalid doctor credentials")
+
+@app.post("/login/patient")
+async def login_patient(credentials: LoginRequest):
+    # TODO: Implement real database validation
+    if credentials.email == "patient@test.com" and credentials.password == "password":
+        return {"message": "Login successful", "role": "patient", "email": credentials.email}
+    else:
+        raise HTTPException(status_code=401, detail="Invalid patient credentials")
 
 @app.post("/predict")
 async def predict_risk(file: UploadFile = File(...)):
