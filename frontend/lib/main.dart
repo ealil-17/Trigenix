@@ -33,7 +33,7 @@ class ArrhythmiaApp extends StatelessWidget {
           Theme.of(context).textTheme,
         ),
         scaffoldBackgroundColor: const Color(0xFFF7F9FC),
-        cardTheme: CardTheme(
+        cardTheme: CardThemeData(
           elevation: 2,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         ),

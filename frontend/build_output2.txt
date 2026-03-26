@@ -1,0 +1,831 @@
+﻿Resolving dependencies...
+Downloading packages...
+  characters 1.4.0 (1.4.1 available)
+  flutter_lints 5.0.0 (6.0.0 available)
+  lints 5.1.1 (6.1.0 available)
+  matcher 0.12.17 (0.12.19 available)
+  material_color_utilities 0.11.1 (0.13.0 available)
+  meta 1.16.0 (1.18.2 available)
+  path_provider_foundation 2.5.1 (2.6.0 available)
+  test_api 0.7.6 (0.7.11 available)
+  vector_math 2.2.0 (2.3.0 available)
+  win32 5.15.0 (6.0.0 available)
+Got dependencies!
+10 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Running Gradle task 'assembleDebug'...                          
+flutter : e: Daemon 
+compilation failed: null
+At line:1 char:1
++ flutter build apk --debug 
+2>&1 | Out-File -FilePath 
+"e:\Hackathon\Fro ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~
+    + CategoryInfo           
+   : NotSpecified: (e: Daem  
+  on compilation failed: n   
+ ull:String) [], RemoteEx    
+ception
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+java.lang.Exception
+	at org.jetbrains.kotlin.daem
+on.common.CompileService$Call
+Result$Error.get(CompileServi
+ce.kt:69)
+	at org.jetbrains.kotlin.daem
+on.common.CompileService$Call
+Result$Error.get(CompileServi
+ce.kt:65)
+	at org.jetbrains.kotlin.comp
+ilerRunner.GradleKotlinCompil
+erWork.compileWithDaemon(Grad
+leKotlinCompilerWork.kt:240)
+	at org.jetbrains.kotlin.comp
+ilerRunner.GradleKotlinCompil
+erWork.compileWithDaemonOrFal
+lbackImpl(GradleKotlinCompile
+rWork.kt:159)
+	at org.jetbrains.kotlin.comp
+ilerRunner.GradleKotlinCompil
+erWork.run(GradleKotlinCompil
+erWork.kt:111)
+	at org.jetbrains.kotlin.comp
+ilerRunner.GradleCompilerRunn
+erWithWorkers$GradleKotlinCom
+pilerWorkAction.execute(Gradl
+eCompilerRunnerWithWorkers.kt
+:76)
+	at org.gradle.workers.intern
+al.DefaultWorkerServer.execut
+e(DefaultWorkerServer.java:63
+)
+	at org.gradle.workers.intern
+al.NoIsolationWorkerFactory$1
+$1.create(NoIsolationWorkerFa
+ctory.java:66)
+	at org.gradle.workers.intern
+al.NoIsolationWorkerFactory$1
+$1.create(NoIsolationWorkerFa
+ctory.java:62)
+	at org.gradle.internal.class
+loader.ClassLoaderUtils.execu
+teInClassloader(ClassLoaderUt
+ils.java:100)
+	at org.gradle.workers.intern
+al.NoIsolationWorkerFactory$1
+.lambda$execute$0(NoIsolation
+WorkerFactory.java:62)
+	at org.gradle.workers.intern
+al.AbstractWorker$1.call(Abst
+ractWorker.java:44)
+	at org.gradle.workers.intern
+al.AbstractWorker$1.call(Abst
+ractWorker.java:41)
+	at org.gradle.internal.opera
+tions.DefaultBuildOperationRu
+nner$CallableBuildOperationWo
+rker.execute(DefaultBuildOper
+ationRunner.java:209)
+	at org.gradle.internal.opera
+tions.DefaultBuildOperationRu
+nner$CallableBuildOperationWo
+rker.execute(DefaultBuildOper
+ationRunner.java:204)
+	at org.gradle.internal.opera
+tions.DefaultBuildOperationRu
+nner$2.execute(DefaultBuildOp
+erationRunner.java:66)
+	at org.gradle.internal.opera
+tions.DefaultBuildOperationRu
+nner$2.execute(DefaultBuildOp
+erationRunner.java:59)
+	at org.gradle.internal.opera
+tions.DefaultBuildOperationRu
+nner.execute(DefaultBuildOper
+ationRunner.java:166)
+	at org.gradle.internal.opera
+tions.DefaultBuildOperationRu
+nner.execute(DefaultBuildOper
+ationRunner.java:59)
+	at org.gradle.internal.opera
+tions.DefaultBuildOperationRu
+nner.call(DefaultBuildOperati
+onRunner.java:53)
+	at org.gradle.workers.intern
+al.AbstractWorker.executeWrap
+pedInBuildOperation(AbstractW
+orker.java:41)
+	at org.gradle.workers.intern
+al.NoIsolationWorkerFactory$1
+.execute(NoIsolationWorkerFac
+tory.java:59)
+	at org.gradle.workers.intern
+al.DefaultWorkerExecutor.lamb
+da$submitWork$0(DefaultWorker
+Executor.java:174)
+	at java.base/java.util.concu
+rrent.FutureTask.run(Unknown 
+Source)
+	at org.gradle.internal.work.
+DefaultConditionalExecutionQu
+eue$ExecutionRunner.runExecut
+ion(DefaultConditionalExecuti
+onQueue.java:194)
+	at org.gradle.internal.work.
+DefaultConditionalExecutionQu
+eue$ExecutionRunner.access$70
+0(DefaultConditionalExecution
+Queue.java:127)
+	at org.gradle.internal.work.
+DefaultConditionalExecutionQu
+eue$ExecutionRunner$1.run(Def
+aultConditionalExecutionQueue
+.java:169)
+	at org.gradle.internal.Facto
+ries$1.create(Factories.java:
+31)
+	at org.gradle.internal.work.
+DefaultWorkerLeaseService.wit
+hLocks(DefaultWorkerLeaseServ
+ice.java:263)
+	at org.gradle.internal.work.
+DefaultWorkerLeaseService.run
+AsWorkerThread(DefaultWorkerL
+easeService.java:127)
+	at org.gradle.internal.work.
+DefaultWorkerLeaseService.run
+AsWorkerThread(DefaultWorkerL
+easeService.java:132)
+	at org.gradle.internal.work.
+DefaultConditionalExecutionQu
+eue$ExecutionRunner.runBatch(
+DefaultConditionalExecutionQu
+eue.java:164)
+	at org.gradle.internal.work.
+DefaultConditionalExecutionQu
+eue$ExecutionRunner.run(Defau
+ltConditionalExecutionQueue.j
+ava:133)
+	at java.base/java.util.concu
+rrent.Executors$RunnableAdapt
+er.call(Unknown Source)
+	at java.base/java.util.concu
+rrent.FutureTask.run(Unknown 
+Source)
+	at org.gradle.internal.concu
+rrent.ExecutorPolicy$CatchAnd
+RecordFailures.onExecute(Exec
+utorPolicy.java:64)
+	at org.gradle.internal.concu
+rrent.AbstractManagedExecutor
+$1.run(AbstractManagedExecuto
+r.java:48)
+	at java.base/java.util.concu
+rrent.ThreadPoolExecutor.runW
+orker(Unknown Source)
+	at java.base/java.util.concu
+rrent.ThreadPoolExecutor$Work
+er.run(Unknown Source)
+	at java.base/java.lang.Threa
+d.run(Unknown Source)
+Caused by: 
+java.lang.AssertionError: 
+java.lang.Exception: Could 
+not close incremental caches 
+in E:\Hackathon\frontend\buil
+d\file_picker\kotlin\compileD
+ebugKotlin\cacheable\caches-j
+vm\jvm\kotlin: 
+class-fq-name-to-source.tab, 
+source-to-classes.tab, 
+internal-name-to-source.tab
+	at org.jetbrains.kotlin.com.
+google.common.io.Closer.close
+(Closer.java:236)
+	at org.jetbrains.kotlin.incr
+emental.IncrementalCachesMana
+ger.close(IncrementalCachesMa
+nager.kt:55)
+	at kotlin.io.CloseableKt.clo
+seFinally(Closeable.kt:56)
+	at org.jetbrains.kotlin.incr
+emental.IncrementalCompilerRu
+nner.compileNonIncrementally(
+IncrementalCompilerRunner.kt:
+293)
+	at org.jetbrains.kotlin.incr
+emental.IncrementalCompilerRu
+nner.compile(IncrementalCompi
+lerRunner.kt:129)
+	at org.jetbrains.kotlin.daem
+on.CompileServiceImplBase.exe
+cIncrementalCompiler(CompileS
+erviceImpl.kt:674)
+	at org.jetbrains.kotlin.daem
+on.CompileServiceImplBase.acc
+ess$execIncrementalCompiler(C
+ompileServiceImpl.kt:91)
+	at org.jetbrains.kotlin.daem
+on.CompileServiceImpl.compile
+(CompileServiceImpl.kt:1659)
+	at java.base/jdk.internal.re
+flect.DirectMethodHandleAcces
+sor.invoke(Unknown Source)
+	at java.base/java.lang.refle
+ct.Method.invoke(Unknown 
+Source)
+	at java.rmi/sun.rmi.server.U
+nicastServerRef.dispatch(Unkn
+own Source)
+	at java.rmi/sun.rmi.transpor
+t.Transport$1.run(Unknown 
+Source)
+	at java.rmi/sun.rmi.transpor
+t.Transport$1.run(Unknown 
+Source)
+	at java.base/java.security.A
+ccessController.doPrivileged(
+Unknown Source)
+	at java.rmi/sun.rmi.transpor
+t.Transport.serviceCall(Unkno
+wn Source)
+	at java.rmi/sun.rmi.transpor
+t.tcp.TCPTransport.handleMess
+ages(Unknown Source)
+	at java.rmi/sun.rmi.transpor
+t.tcp.TCPTransport$Connection
+Handler.run0(Unknown Source)
+	at java.rmi/sun.rmi.transpor
+t.tcp.TCPTransport$Connection
+Handler.lambda$run$0(Unknown 
+Source)
+	at java.base/java.security.A
+ccessController.doPrivileged(
+Unknown Source)
+	at java.rmi/sun.rmi.transpor
+t.tcp.TCPTransport$Connection
+Handler.run(Unknown Source)
+	... 3 more
+Caused by: 
+java.lang.Exception: Could 
+not close incremental caches 
+in E:\Hackathon\frontend\buil
+d\file_picker\kotlin\compileD
+ebugKotlin\cacheable\caches-j
+vm\jvm\kotlin: 
+class-fq-name-to-source.tab, 
+source-to-classes.tab, 
+internal-name-to-source.tab
+	at org.jetbrains.kotlin.incr
+emental.storage.BasicMapsOwne
+r.forEachMapSafe(BasicMapsOwn
+er.kt:95)
+	at org.jetbrains.kotlin.incr
+emental.storage.BasicMapsOwne
+r.close(BasicMapsOwner.kt:53)
+	at org.jetbrains.kotlin.com.
+google.common.io.Closer.close
+(Closer.java:223)
+	... 22 more
+	Suppressed: java.lang.Illega
+lArgumentException: this and 
+base files have different 
+roots: C:\Users\micro\AppData
+\Local\Pub\Cache\hosted\pub.d
+ev\file_picker-10.3.10\androi
+d\src\main\kotlin\com\mr\flut
+ter\plugin\filepicker\FileInf
+o.kt and E:\Hackathon\fronten
+d\android.
+		at kotlin.io.FilesKt__Utils
+Kt.toRelativeString(Utils.kt:
+117)
+		at kotlin.io.FilesKt__Utils
+Kt.relativeTo(Utils.kt:128)
+		at org.jetbrains.kotlin.inc
+remental.storage.RelocatableF
+ileToPathConverter.toPath(Rel
+ocatableFileToPathConverter.k
+t:24)
+		at org.jetbrains.kotlin.inc
+remental.storage.FileDescript
+or.save(FileToPathConverter.k
+t:33)
+		at org.jetbrains.kotlin.inc
+remental.storage.FileDescript
+or.save(FileToPathConverter.k
+t:30)
+		at org.jetbrains.kotlin.com
+.intellij.util.io.PersistentM
+apImpl.doPut(PersistentMapImp
+l.java:443)
+		at org.jetbrains.kotlin.com
+.intellij.util.io.PersistentM
+apImpl.put(PersistentMapImpl.
+java:422)
+		at org.jetbrains.kotlin.com
+.intellij.util.io.PersistentH
+ashMap.put(PersistentHashMap.
+java:105)
+		at org.jetbrains.kotlin.inc
+remental.storage.LazyStorage.
+set(LazyStorage.kt:80)
+		at org.jetbrains.kotlin.inc
+remental.storage.InMemoryStor
+age.applyChanges(InMemoryStor
+age.kt:108)
+		at org.jetbrains.kotlin.inc
+remental.storage.InMemoryStor
+age.close(InMemoryStorage.kt:
+136)
+		at org.jetbrains.kotlin.inc
+remental.storage.PersistentSt
+orageWrapper.close(Persistent
+Storage.kt:124)
+		at org.jetbrains.kotlin.inc
+remental.storage.BasicMapsOwn
+er$close$1.invoke(BasicMapsOw
+ner.kt:53)
+		at org.jetbrains.kotlin.inc
+remental.storage.BasicMapsOwn
+er$close$1.invoke(BasicMapsOw
+ner.kt:53)
+		at org.jetbrains.kotlin.inc
+remental.storage.BasicMapsOwn
+er.forEachMapSafe(BasicMapsOw
+ner.kt:87)
+		... 24 more
+	Suppressed: java.lang.Illega
+lArgumentException: this and 
+base files have different 
+roots: C:\Users\micro\AppData
+\Local\Pub\Cache\hosted\pub.d
+ev\file_picker-10.3.10\androi
+d\src\main\kotlin\com\mr\flut
+ter\plugin\filepicker\FileInf
+o.kt and E:\Hackathon\fronten
+d\android.
+		at kotlin.io.FilesKt__Utils
+Kt.toRelativeString(Utils.kt:
+117)
+		at kotlin.io.FilesKt__Utils
+Kt.relativeTo(Utils.kt:128)
+		at org.jetbrains.kotlin.inc
+remental.storage.RelocatableF
+ileToPathConverter.toPath(Rel
+ocatableFileToPathConverter.k
+t:24)
+		at org.jetbrains.kotlin.inc
+remental.storage.FileDescript
+or.getHashCode(FileToPathConv
+erter.kt:50)
+		at org.jetbrains.kotlin.inc
+remental.storage.FileDescript
+or.getHashCode(FileToPathConv
+erter.kt:30)
+		at org.jetbrains.kotlin.com
+.intellij.util.containers.Lin
+kedCustomHashMap.hashKey(Link
+edCustomHashMap.java:109)
+		at org.jetbrains.kotlin.com
+.intellij.util.containers.Lin
+kedCustomHashMap.remove(Linke
+dCustomHashMap.java:153)
+		at org.jetbrains.kotlin.com
+.intellij.util.containers.SLR
+UMap.remove(SLRUMap.java:89)
+		at org.jetbrains.kotlin.com
+.intellij.util.io.PersistentM
+apImpl.flushAppendCache(Persi
+stentMapImpl.java:999)
+		at org.jetbrains.kotlin.com
+.intellij.util.io.PersistentM
+apImpl.doPut(PersistentMapImp
+l.java:451)
+		at org.jetbrains.kotlin.com
+.intellij.util.io.PersistentM
+apImpl.put(PersistentMapImpl.
+java:422)
+		at org.jetbrains.kotlin.com
+.intellij.util.io.PersistentH
+ashMap.put(PersistentHashMap.
+java:105)
+		at org.jetbrains.kotlin.inc
+remental.storage.LazyStorage.
+set(LazyStorage.kt:80)
+		at org.jetbrains.kotlin.inc
+remental.storage.InMemoryStor
+age.applyChanges(InMemoryStor
+age.kt:108)
+		at org.jetbrains.kotlin.inc
+remental.storage.AppendableIn
+MemoryStorage.applyChanges(In
+MemoryStorage.kt:179)
+		at org.jetbrains.kotlin.inc
+remental.storage.InMemoryStor
+age.close(InMemoryStorage.kt:
+136)
+		at org.jetbrains.kotlin.inc
+remental.storage.AppendableSe
+tBasicMap.close(BasicMap.kt:1
+57)
+		at org.jetbrains.kotlin.inc
+remental.storage.BasicMapsOwn
+er$close$1.invoke(BasicMapsOw
+ner.kt:53)
+		at org.jetbrains.kotlin.inc
+remental.storage.BasicMapsOwn
+er$close$1.invoke(BasicMapsOw
+ner.kt:53)
+		at org.jetbrains.kotlin.inc
+remental.storage.BasicMapsOwn
+er.forEachMapSafe(BasicMapsOw
+ner.kt:87)
+		... 24 more
+	Suppressed: java.lang.Illega
+lArgumentException: this and 
+base files have different 
+roots: C:\Users\micro\AppData
+\Local\Pub\Cache\hosted\pub.d
+ev\file_picker-10.3.10\androi
+d\src\main\kotlin\com\mr\flut
+ter\plugin\filepicker\FileInf
+o.kt and E:\Hackathon\fronten
+d\android.
+		at kotlin.io.FilesKt__Utils
+Kt.toRelativeString(Utils.kt:
+117)
+		at kotlin.io.FilesKt__Utils
+Kt.relativeTo(Utils.kt:128)
+		at org.jetbrains.kotlin.inc
+remental.storage.RelocatableF
+ileToPathConverter.toPath(Rel
+ocatableFileToPathConverter.k
+t:24)
+		at org.jetbrains.kotlin.inc
+remental.storage.FileDescript
+or.save(FileToPathConverter.k
+t:33)
+		at org.jetbrains.kotlin.inc
+remental.storage.FileDescript
+or.save(FileToPathConverter.k
+t:30)
+		at org.jetbrains.kotlin.inc
+remental.storage.AppendableCo
+llectionExternalizer.save(Laz
+yStorage.kt:151)
+		at org.jetbrains.kotlin.inc
+remental.storage.AppendableCo
+llectionExternalizer.save(Laz
+yStorage.kt:142)
+		at org.jetbrains.kotlin.com
+.intellij.util.io.PersistentM
+apImpl.doPut(PersistentMapImp
+l.java:443)
+		at org.jetbrains.kotlin.com
+.intellij.util.io.PersistentM
+apImpl.put(PersistentMapImpl.
+java:422)
+		at org.jetbrains.kotlin.com
+.intellij.util.io.PersistentH
+ashMap.put(PersistentHashMap.
+java:105)
+		at org.jetbrains.kotlin.inc
+remental.storage.LazyStorage.
+set(LazyStorage.kt:80)
+		at org.jetbrains.kotlin.inc
+remental.storage.InMemoryStor
+age.applyChanges(InMemoryStor
+age.kt:108)
+		at org.jetbrains.kotlin.inc
+remental.storage.AppendableIn
+MemoryStorage.applyChanges(In
+MemoryStorage.kt:179)
+		at org.jetbrains.kotlin.inc
+remental.storage.InMemoryStor
+age.close(InMemoryStorage.kt:
+136)
+		at org.jetbrains.kotlin.inc
+remental.storage.PersistentSt
+orageWrapper.close(Persistent
+Storage.kt:124)
+		at org.jetbrains.kotlin.inc
+remental.storage.BasicMapsOwn
+er$close$1.invoke(BasicMapsOw
+ner.kt:53)
+		at org.jetbrains.kotlin.inc
+remental.storage.BasicMapsOwn
+er$close$1.invoke(BasicMapsOw
+ner.kt:53)
+		at org.jetbrains.kotlin.inc
+remental.storage.BasicMapsOwn
+er.forEachMapSafe(BasicMapsOw
+ner.kt:87)
+		... 24 more
+	Suppressed: 
+java.lang.Exception: Could 
+not close incremental caches 
+in E:\Hackathon\frontend\buil
+d\file_picker\kotlin\compileD
+ebugKotlin\cacheable\caches-j
+vm\lookups: id-to-file.tab, 
+file-to-id.tab
+		at org.jetbrains.kotlin.inc
+remental.storage.BasicMapsOwn
+er.forEachMapSafe(BasicMapsOw
+ner.kt:95)
+		at org.jetbrains.kotlin.inc
+remental.storage.BasicMapsOwn
+er.close(BasicMapsOwner.kt:53
+)
+		at org.jetbrains.kotlin.inc
+remental.LookupStorage.close(
+LookupStorage.kt:155)
+		... 23 more
+		Suppressed: java.lang.Illeg
+alArgumentException: this 
+and base files have 
+different roots: C:\Users\mic
+ro\AppData\Local\Pub\Cache\ho
+sted\pub.dev\file_picker-10.3
+.10\android\src\main\kotlin\c
+om\mr\flutter\plugin\filepick
+er\FileInfo.kt and E:\Hackath
+on\frontend\android.
+			at kotlin.io.FilesKt__Util
+sKt.toRelativeString(Utils.kt
+:117)
+			at kotlin.io.FilesKt__Util
+sKt.relativeTo(Utils.kt:128)
+			at org.jetbrains.kotlin.in
+cremental.storage.Relocatable
+FileToPathConverter.toPath(Re
+locatableFileToPathConverter.
+kt:24)
+			at org.jetbrains.kotlin.in
+cremental.storage.LegacyFileE
+xternalizer.save(IdToFileMap.
+kt:51)
+			at org.jetbrains.kotlin.in
+cremental.storage.LegacyFileE
+xternalizer.save(IdToFileMap.
+kt:48)
+			at org.jetbrains.kotlin.co
+m.intellij.util.io.Persistent
+MapImpl.doPut(PersistentMapIm
+pl.java:443)
+			at org.jetbrains.kotlin.co
+m.intellij.util.io.Persistent
+MapImpl.put(PersistentMapImpl
+.java:422)
+			at org.jetbrains.kotlin.co
+m.intellij.util.io.Persistent
+HashMap.put(PersistentHashMap
+.java:105)
+			at org.jetbrains.kotlin.in
+cremental.storage.LazyStorage
+.set(LazyStorage.kt:80)
+			at org.jetbrains.kotlin.in
+cremental.storage.InMemorySto
+rage.applyChanges(InMemorySto
+rage.kt:108)
+			at org.jetbrains.kotlin.in
+cremental.storage.InMemorySto
+rage.close(InMemoryStorage.kt
+:136)
+			at org.jetbrains.kotlin.in
+cremental.storage.PersistentS
+torageWrapper.close(Persisten
+tStorage.kt:124)
+			at org.jetbrains.kotlin.in
+cremental.storage.BasicMapsOw
+ner$close$1.invoke(BasicMapsO
+wner.kt:53)
+			at org.jetbrains.kotlin.in
+cremental.storage.BasicMapsOw
+ner$close$1.invoke(BasicMapsO
+wner.kt:53)
+			at org.jetbrains.kotlin.in
+cremental.storage.BasicMapsOw
+ner.forEachMapSafe(BasicMapsO
+wner.kt:87)
+			... 25 more
+		Suppressed: java.lang.Illeg
+alArgumentException: this 
+and base files have 
+different roots: C:\Users\mic
+ro\AppData\Local\Pub\Cache\ho
+sted\pub.dev\file_picker-10.3
+.10\android\src\main\kotlin\c
+om\mr\flutter\plugin\filepick
+er\FileInfo.kt and E:\Hackath
+on\frontend\android.
+			at kotlin.io.FilesKt__Util
+sKt.toRelativeString(Utils.kt
+:117)
+			at kotlin.io.FilesKt__Util
+sKt.relativeTo(Utils.kt:128)
+			at org.jetbrains.kotlin.in
+cremental.storage.Relocatable
+FileToPathConverter.toPath(Re
+locatableFileToPathConverter.
+kt:24)
+			at org.jetbrains.kotlin.in
+cremental.storage.FileDescrip
+tor.getHashCode(FileToPathCon
+verter.kt:50)
+			at org.jetbrains.kotlin.in
+cremental.storage.FileDescrip
+tor.getHashCode(FileToPathCon
+verter.kt:30)
+			at org.jetbrains.kotlin.co
+m.intellij.util.containers.Li
+nkedCustomHashMap.hashKey(Lin
+kedCustomHashMap.java:109)
+			at org.jetbrains.kotlin.co
+m.intellij.util.containers.Li
+nkedCustomHashMap.remove(Link
+edCustomHashMap.java:153)
+			at org.jetbrains.kotlin.co
+m.intellij.util.containers.SL
+RUMap.remove(SLRUMap.java:89)
+			at org.jetbrains.kotlin.co
+m.intellij.util.io.Persistent
+MapImpl.flushAppendCache(Pers
+istentMapImpl.java:999)
+			at org.jetbrains.kotlin.co
+m.intellij.util.io.Persistent
+MapImpl.doPut(PersistentMapIm
+pl.java:451)
+			at org.jetbrains.kotlin.co
+m.intellij.util.io.Persistent
+MapImpl.put(PersistentMapImpl
+.java:422)
+			at org.jetbrains.kotlin.co
+m.intellij.util.io.Persistent
+HashMap.put(PersistentHashMap
+.java:105)
+			at org.jetbrains.kotlin.in
+cremental.storage.LazyStorage
+.set(LazyStorage.kt:80)
+			at org.jetbrains.kotlin.in
+cremental.storage.InMemorySto
+rage.applyChanges(InMemorySto
+rage.kt:108)
+			at org.jetbrains.kotlin.in
+cremental.storage.InMemorySto
+rage.close(InMemoryStorage.kt
+:136)
+			at org.jetbrains.kotlin.in
+cremental.storage.PersistentS
+torageWrapper.close(Persisten
+tStorage.kt:124)
+			at org.jetbrains.kotlin.in
+cremental.storage.BasicMapsOw
+ner$close$1.invoke(BasicMapsO
+wner.kt:53)
+			at org.jetbrains.kotlin.in
+cremental.storage.BasicMapsOw
+ner$close$1.invoke(BasicMapsO
+wner.kt:53)
+			at org.jetbrains.kotlin.in
+cremental.storage.BasicMapsOw
+ner.forEachMapSafe(BasicMapsO
+wner.kt:87)
+			... 25 more
+	Suppressed: 
+java.lang.Exception: Could 
+not close incremental caches 
+in E:\Hackathon\frontend\buil
+d\file_picker\kotlin\compileD
+ebugKotlin\cacheable\caches-j
+vm\inputs: 
+source-to-output.tab
+		... 25 more
+		Suppressed: java.lang.Illeg
+alArgumentException: this 
+and base files have 
+different roots: C:\Users\mic
+ro\AppData\Local\Pub\Cache\ho
+sted\pub.dev\file_picker-10.3
+.10\android\src\main\kotlin\c
+om\mr\flutter\plugin\filepick
+er\FileInfo.kt and E:\Hackath
+on\frontend\android.
+			at kotlin.io.FilesKt__Util
+sKt.toRelativeString(Utils.kt
+:117)
+			at kotlin.io.FilesKt__Util
+sKt.relativeTo(Utils.kt:128)
+			at org.jetbrains.kotlin.in
+cremental.storage.Relocatable
+FileToPathConverter.toPath(Re
+locatableFileToPathConverter.
+kt:24)
+			at org.jetbrains.kotlin.in
+cremental.storage.FileDescrip
+tor.getHashCode(FileToPathCon
+verter.kt:50)
+			at org.jetbrains.kotlin.in
+cremental.storage.FileDescrip
+tor.getHashCode(FileToPathCon
+verter.kt:30)
+			at org.jetbrains.kotlin.co
+m.intellij.util.containers.Li
+nkedCustomHashMap.hashKey(Lin
+kedCustomHashMap.java:109)
+			at org.jetbrains.kotlin.co
+m.intellij.util.containers.Li
+nkedCustomHashMap.remove(Link
+edCustomHashMap.java:153)
+			at org.jetbrains.kotlin.co
+m.intellij.util.containers.SL
+RUMap.remove(SLRUMap.java:89)
+			at org.jetbrains.kotlin.co
+m.intellij.util.io.Persistent
+MapImpl.flushAppendCache(Pers
+istentMapImpl.java:999)
+			at org.jetbrains.kotlin.co
+m.intellij.util.io.Persistent
+MapImpl.doPut(PersistentMapIm
+pl.java:451)
+			at org.jetbrains.kotlin.co
+m.intellij.util.io.Persistent
+MapImpl.put(PersistentMapImpl
+.java:422)
+			at org.jetbrains.kotlin.co
+m.intellij.util.io.Persistent
+HashMap.put(PersistentHashMap
+.java:105)
+			at org.jetbrains.kotlin.in
+cremental.storage.LazyStorage
+.set(LazyStorage.kt:80)
+			at org.jetbrains.kotlin.in
+cremental.storage.InMemorySto
+rage.applyChanges(InMemorySto
+rage.kt:108)
+			at org.jetbrains.kotlin.in
+cremental.storage.AppendableI
+nMemoryStorage.applyChanges(I
+nMemoryStorage.kt:179)
+			at org.jetbrains.kotlin.in
+cremental.storage.InMemorySto
+rage.close(InMemoryStorage.kt
+:136)
+			at org.jetbrains.kotlin.in
+cremental.storage.AppendableS
+etBasicMap.close(BasicMap.kt:
+157)
+			at org.jetbrains.kotlin.in
+cremental.storage.BasicMapsOw
+ner$close$1.invoke(BasicMapsO
+wner.kt:53)
+			at org.jetbrains.kotlin.in
+cremental.storage.BasicMapsOw
+ner$close$1.invoke(BasicMapsO
+wner.kt:53)
+			at org.jetbrains.kotlin.in
+cremental.storage.BasicMapsOw
+ner.forEachMapSafe(BasicMapsO
+wner.kt:87)
+			... 24 more
+
+exception: c:\Users\micro\App
+Data\Local\Pub\Cache\hosted\p
+ub.dev\file_picker-10.3.10\an
+droid\src\main\kotlin\com\mr\
+flutter\plugin\filepicker\Fil
+ePickerPlugin.kt:148:70: 
+warning: unchecked cast of 
+'kotlin.Any?' to 'java.util.A
+rrayList<kotlin.String>?'.
+exception:                   
+  getMimeTypes(arguments?.get
+("allowedExtensions") as 
+ArrayList<String>?)
+exception:                   
+                             
+                      
+^^^^^^^^^^^^^^^^^^^^^
+exception: c:\Users\micro\App
+Data\Local\Pub\Cache\hosted\p
+ub.dev\file_picker-10.3.10\an
+droid\src\main\kotlin\com\mr\
+flutter\plugin\filepicker\Fil
+ePickerPlugin.kt:170:70: 
+warning: unchecked cast of 
+'kotlin.Any?' to 'java.util.A
+rrayList<kotlin.String>?'.
+exception:                   
+  getMimeTypes(arguments?.get
+("allowedExtensions") as 
+ArrayList<String>?),
+exception:                   
+                             
+                      
+^^^^^^^^^^^^^^^^^^^^^
+Running Gradle task 'assembleDebug'...                            192.8s
+ΓêÜ Built build\app\outputs\flutter-apk\app-debug.apk

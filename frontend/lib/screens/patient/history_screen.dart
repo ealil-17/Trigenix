@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:provider/provider.dart';
 import '../../providers/data_provider.dart';
+import '../../models/patient.dart';
 import 'package:intl/intl.dart';
 
 class HistoryScreen extends StatelessWidget {

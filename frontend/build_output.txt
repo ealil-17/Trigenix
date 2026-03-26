@@ -1,0 +1,141 @@
+﻿Resolving dependencies...
+Downloading packages...
+  characters 1.4.0 (1.4.1 available)
+  flutter_lints 5.0.0 (6.0.0 available)
+  lints 5.1.1 (6.1.0 available)
+  matcher 0.12.17 (0.12.19 available)
+  material_color_utilities 0.11.1 (0.13.0 available)
+  meta 1.16.0 (1.18.2 available)
+  path_provider_foundation 2.5.1 (2.6.0 available)
+  test_api 0.7.6 (0.7.11 available)
+  vector_math 2.2.0 (2.3.0 available)
+  win32 5.15.0 (6.0.0 available)
+Got dependencies!
+10 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Running Gradle task 'assembleDebug'...                          
+flutter : 
+lib/main.dart:36:20: Error: 
+The argument type 
+'CardTheme' can't be 
+assigned to the parameter 
+type 'CardThemeData?'.
+At line:1 char:1
++ flutter build apk --debug 
+2>&1 | Out-File -FilePath 
+"e:\Hackathon\Fro ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~
+    + CategoryInfo           
+   : NotSpecified: (lib/mai  
+  n.dart:3...ardThemeData?   
+ '.:String) [], RemoteExc    
+eption
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+ - 'CardTheme' is from 'packa
+ge:flutter/src/material/card_
+theme.dart' ('/D:/_configs/fl
+utter/packages/flutter/lib/sr
+c/material/card_theme.dart').
+ - 'CardThemeData' is from 'p
+ackage:flutter/src/material/c
+ard_theme.dart' ('/D:/_config
+s/flutter/packages/flutter/li
+b/src/material/card_theme.dar
+t').
+        cardTheme: CardTheme(
+                   ^
+lib/screens/patient/history_s
+creen.dart:63:48: Error: The 
+getter 'color' isn't defined 
+for the type 'RiskLevel'.
+ - 'RiskLevel' is from 'packa
+ge:frontend/models/patient.da
+rt' 
+('lib/models/patient.dart').
+Try correcting the name to 
+the name of an existing 
+getter, or defining a getter 
+or field named 'color'.
+                  
+backgroundColor: 
+record.risk.color,
+                             
+                  ^^^^^
+lib/screens/patient/history_s
+creen.dart:68:44: Error: The 
+getter 'displayName' isn't 
+defined for the type 
+'RiskLevel'.
+ - 'RiskLevel' is from 'packa
+ge:frontend/models/patient.da
+rt' 
+('lib/models/patient.dart').
+Try correcting the name to 
+the name of an existing 
+getter, or defining a getter 
+or field named 'displayName'.
+                trailing: Tex
+t(record.risk.displayName, 
+style: TextStyle(color: 
+record.risk.color, 
+fontWeight: 
+FontWeight.bold)),
+                             
+              ^^^^^^^^^^^
+lib/screens/patient/history_s
+creen.dart:68:93: Error: The 
+getter 'color' isn't defined 
+for the type 'RiskLevel'.
+ - 'RiskLevel' is from 'packa
+ge:frontend/models/patient.da
+rt' 
+('lib/models/patient.dart').
+Try correcting the name to 
+the name of an existing 
+getter, or defining a getter 
+or field named 'color'.
+                trailing: Tex
+t(record.risk.displayName, 
+style: TextStyle(color: 
+record.risk.color, 
+fontWeight: 
+FontWeight.bold)),
+                             
+                             
+                             
+   ^^^^^
+Target 
+kernel_snapshot_program 
+failed: Exception
+
+
+FAILURE: Build failed with 
+an exception.
+
+* What went wrong:
+Execution failed for task ':a
+pp:compileFlutterBuildDebug'.
+> Process 'command 'D:\_confi
+gs\flutter\bin\flutter.bat'' 
+finished with non-zero exit 
+value 1
+
+* Try:
+> Run with --stacktrace 
+option to get the stack 
+trace.
+> Run with --info or --debug 
+option to get more log 
+output.
+> Run with --scan to get 
+full insights.
+> Get more help at 
+https://help.gradle.org.
+
+BUILD FAILED in 12s
+Running Gradle task 'assembleDebug'...                             12.6s
+Gradle task assembleDebug 
+failed with exit code 1
