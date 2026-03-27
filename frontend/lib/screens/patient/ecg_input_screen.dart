@@ -121,21 +121,43 @@ class _EcgInputScreenState extends State<EcgInputScreen> {
             const SizedBox(height: 32),
             const Text('Analysis Result', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             const SizedBox(height: 16),
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  children: [
-                    Text(_result!['message'] ?? '', style: const TextStyle(fontSize: 16), textAlign: TextAlign.center),
-                    const SizedBox(height: 16),
-                    Text(
-                      'Probability: ${((_result!['arrhythmia_probability'] as double) * 100).toStringAsFixed(1)}%',
-                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                    )
-                  ],
+            Builder(builder: (context) {
+              final riskLevel = _result!['risk_level'] as String? ?? 'Low';
+              Color riskColor;
+              IconData riskIcon;
+              if (riskLevel == 'High') {
+                riskColor = Colors.red;
+                riskIcon = Icons.warning_rounded;
+              } else if (riskLevel == 'Medium') {
+                riskColor = Colors.orange;
+                riskIcon = Icons.info_rounded;
+              } else {
+                riskColor = Colors.green;
+                riskIcon = Icons.check_circle_rounded;
+              }
+              return Card(
+                elevation: 4,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(color: riskColor.withOpacity(0.4), width: 2),
+                  ),
+                  padding: const EdgeInsets.all(24.0),
+                  child: Column(
+                    children: [
+                      Icon(riskIcon, color: riskColor, size: 48),
+                      const SizedBox(height: 16),
+                      Text(
+                        'The patient has a $riskLevel risk of Arrhythmia.',
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: riskColor),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            )
+              );
+            })
           ]
         ],
       ),

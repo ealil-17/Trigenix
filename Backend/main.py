@@ -1,15 +1,25 @@
 from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 import joblib
 import pandas as pd
 import numpy as np
 import io
 import os
+import traceback
 from pydantic import BaseModel
 
 app = FastAPI(
     title="Arrhythmia Risk Prediction API",
     description="API to predict the risk of Arrhythmia from an ECG signal file (CSV format).",
     version="1.0.0"
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Load the trained model (fixed path assuming this is in Backend/main.py)
@@ -49,17 +59,24 @@ async def login_patient(credentials: LoginRequest):
 
 @app.post("/predict")
 async def predict_risk(file: UploadFile = File(...)):
+    print(f"DEBUG: Received file request: {file.filename}")
     if not model:
+        print("DEBUG: Model not loaded!")
         raise HTTPException(status_code=500, detail="Model could not be loaded on the server.")
     
     # Check if file is a CSV
     if not file.filename.endswith('.csv'):
+        print(f"DEBUG: Invalid file type: {file.filename}")
         raise HTTPException(status_code=400, detail="Only CSV files containing 187 ECG data signal points are supported.")
     
     try:
         # Read the uploaded file into a Pandas DataFrame
         content = await file.read()
-        df = pd.read_csv(io.BytesIO(content), header=None)
+        try:
+            df = pd.read_csv(io.BytesIO(content), header=None, encoding='utf-8')
+        except UnicodeDecodeError:
+            df = pd.read_csv(io.BytesIO(content), header=None, encoding='latin-1')
+        print(f"DEBUG: CSV shape: {df.shape}")
         
         # Ensure we have at least 187 columns to match the features our model was trained on
         if df.shape[1] < 187:
@@ -90,7 +107,10 @@ async def predict_risk(file: UploadFile = File(...)):
             "message": f"Based on the ECG signal, the patient has a {risk_level} risk of Arrhythmia."
         }
         
+    except HTTPException:
+        raise
     except Exception as e:
+        print(f"DEBUG TRACEBACK: {traceback.format_exc()}")
         raise HTTPException(status_code=500, detail=f"An error occurred while processing the file: {str(e)}")
 
 # To run the API server locally:

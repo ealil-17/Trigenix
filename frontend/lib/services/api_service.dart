@@ -3,7 +3,7 @@ import 'package:http_parser/http_parser.dart';
 
 class ApiService {
   final Dio _dio = Dio(BaseOptions(
-    baseUrl: 'https://sna.selfmade.fun/Trigenix',
+    baseUrl: 'https://ealil-hack.portos.cloud',
     connectTimeout: const Duration(seconds: 10),
     receiveTimeout: const Duration(seconds: 10),
   ));
@@ -19,9 +19,12 @@ class ApiService {
       });
 
       var response = await _dio.post('/predict', data: formData);
+      print('PREDICT SUCCESS: ${response.data}');
       return response.data;
     } catch (e) {
-      throw Exception('Failed to upload and predict. Ensure the backend is running. Error: $e');
+      print('BASE URL: ${_dio.options.baseUrl}');
+      print('FULL ERROR: $e');
+      throw Exception('Failed to upload and predict. BaseURL: ${_dio.options.baseUrl} Error: $e');
     }
   }
 }

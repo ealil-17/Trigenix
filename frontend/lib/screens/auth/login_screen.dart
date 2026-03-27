@@ -41,10 +41,10 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Icon(Icons.favorite, size: 80, color: Colors.blueAccent),
+              Image.asset('assets/images/biological_heart.png', height: 100),
               const SizedBox(height: 24),
               const Text(
-                'Cardiac AI Scanner',
+                'Cardiac',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
               ),

@@ -14,18 +14,18 @@ void main() {
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => DataProvider()),
       ],
-      child: const ArrhythmiaApp(),
+      child: const CardiacApp(),
     ),
   );
 }
 
-class ArrhythmiaApp extends StatelessWidget {
-  const ArrhythmiaApp({Key? key}) : super(key: key);
+class CardiacApp extends StatelessWidget {
+  const CardiacApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Arrhythmia AI Scanner',
+      title: 'Cardiac',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
