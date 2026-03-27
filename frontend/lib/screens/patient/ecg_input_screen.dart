@@ -4,6 +4,9 @@ import 'package:provider/provider.dart';
 import '../../services/api_service.dart';
 import '../../providers/data_provider.dart';
 import '../../models/patient.dart';
+import '../../theme/app_theme.dart';
+import '../../widgets/app_surfaces.dart';
+import '../../widgets/responsive_layout.dart';
 
 class EcgInputScreen extends StatefulWidget {
   const EcgInputScreen({Key? key}) : super(key: key);
@@ -59,10 +62,17 @@ class _EcgInputScreenState extends State<EcgInputScreen> {
           );
         }
       }
+    } on ApiServiceException catch (e) {
+      if (mounted) {
+        setState(() {
+          _error = e.message;
+          _isUploading = false;
+        });
+      }
     } catch (e) {
       if (mounted) {
         setState(() {
-          _error = e.toString();
+          _error = 'Unexpected error while uploading ECG data. Please try again.';
           _isUploading = false;
         });
       }
@@ -71,27 +81,38 @@ class _EcgInputScreenState extends State<EcgInputScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final horizontalPadding = ResponsiveLayout.pageHorizontalPadding(context);
+    final viewportHeight = MediaQuery.of(context).size.height;
+    final uploadHeight = (viewportHeight * 0.26).clamp(180.0, 300.0);
+
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(24.0),
+      padding: EdgeInsets.fromLTRB(horizontalPadding, 10, horizontalPadding, 24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const Text(
-            'Upload ECG Data',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          const SectionHeading(
+            title: 'Upload ECG Data',
+            subtitle: 'Drop or select a single-lead CSV file (187 points) for an instant AI risk score.',
           ),
-          const SizedBox(height: 8),
-          const Text('Upload a single-lead ECG CSV file (187 data points) to get an AI-powered arrhythmia risk assessment.', style: TextStyle(color: Colors.grey)),
-          const SizedBox(height: 32),
-          
+          const SizedBox(height: 18),
           InkWell(
             onTap: _isUploading ? null : _pickAndAnalyze,
-            child: Container(
-              height: 200,
+            borderRadius: BorderRadius.circular(22),
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 260),
+              height: uploadHeight,
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.blueAccent, width: 2, style: BorderStyle.solid),
-                borderRadius: BorderRadius.circular(16),
-                color: Colors.blue.withOpacity(0.05),
+                border: Border.all(
+                  color: _isUploading ? AppTheme.cyan : AppTheme.electricBlue.withOpacity(0.8),
+                  width: 2,
+                ),
+                borderRadius: BorderRadius.circular(22),
+                gradient: LinearGradient(
+                  colors: [
+                    AppTheme.electricBlue.withOpacity(0.08),
+                    AppTheme.cyan.withOpacity(0.08),
+                  ],
+                ),
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -99,27 +120,48 @@ class _EcgInputScreenState extends State<EcgInputScreen> {
                   if (_isUploading)
                     const CircularProgressIndicator()
                   else ...[
-                    const Icon(Icons.upload_file, size: 64, color: Colors.blueAccent),
+                    const Icon(Icons.cloud_upload_rounded, size: 66, color: AppTheme.electricBlue),
                     const SizedBox(height: 16),
-                    const Text('Tap to select .csv file', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.blueAccent)),
+                    Text(
+                      'Tap to select .csv file',
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w700,
+                            color: AppTheme.electricBlue,
+                          ),
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      'Interactive analysis starts instantly after upload',
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Theme.of(context).hintColor),
+                    ),
                   ]
                 ],
               ),
             ),
           ),
-          
+
           if (_error != null) ...[
-            const SizedBox(height: 24),
-            Container(
-              padding: const EdgeInsets.all(16),
-              color: Colors.red.shade50,
-              child: Text(_error!, style: TextStyle(color: Colors.red.shade900)),
+            const SizedBox(height: 18),
+            GlassCard(
+              borderColor: AppTheme.danger.withOpacity(0.5),
+              child: Row(
+                children: [
+                  const Icon(Icons.error_outline, color: AppTheme.danger),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      _error!,
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppTheme.danger),
+                    ),
+                  ),
+                ],
+              ),
             )
           ],
 
           if (_result != null) ...[
-            const SizedBox(height: 32),
-            const Text('Analysis Result', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 22),
+            Text('Analysis Result', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w800)),
             const SizedBox(height: 16),
             Builder(builder: (context) {
               final riskLevel = _result!['risk_level'] as String? ?? 'Low';
@@ -135,26 +177,37 @@ class _EcgInputScreenState extends State<EcgInputScreen> {
                 riskColor = Colors.green;
                 riskIcon = Icons.check_circle_rounded;
               }
-              return Card(
-                elevation: 4,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: riskColor.withOpacity(0.4), width: 2),
-                  ),
-                  padding: const EdgeInsets.all(24.0),
-                  child: Column(
-                    children: [
-                      Icon(riskIcon, color: riskColor, size: 48),
-                      const SizedBox(height: 16),
-                      Text(
-                        'The patient has a $riskLevel risk of Arrhythmia.',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: riskColor),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
+              return GlassCard(
+                borderColor: riskColor.withOpacity(0.5),
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          width: 54,
+                          height: 54,
+                          decoration: BoxDecoration(
+                            color: riskColor.withOpacity(0.14),
+                            borderRadius: BorderRadius.circular(14),
+                          ),
+                          child: Icon(riskIcon, color: riskColor, size: 30),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Text(
+                            '$riskLevel Risk Detected',
+                            style: Theme.of(context).textTheme.titleLarge?.copyWith(color: riskColor, fontWeight: FontWeight.w800),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 14),
+                    Text(
+                      'The uploaded ECG pattern indicates a $riskLevel probability of arrhythmia. Continue monitoring and compare upcoming uploads for trend stability.',
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                  ],
                 ),
               );
             })

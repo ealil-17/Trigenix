@@ -65,26 +65,55 @@ async def predict_risk(file: UploadFile = File(...)):
         raise HTTPException(status_code=500, detail="Model could not be loaded on the server.")
     
     # Check if file is a CSV
-    if not file.filename.endswith('.csv'):
+    if not file.filename or not file.filename.lower().endswith('.csv'):
         print(f"DEBUG: Invalid file type: {file.filename}")
         raise HTTPException(status_code=400, detail="Only CSV files containing 187 ECG data signal points are supported.")
     
     try:
-        # Read the uploaded file into a Pandas DataFrame
+        # Read the uploaded file into a Pandas DataFrame with robust parsing for mobile-exported CSVs.
         content = await file.read()
-        try:
-            df = pd.read_csv(io.BytesIO(content), header=None, encoding='utf-8')
-        except UnicodeDecodeError:
-            df = pd.read_csv(io.BytesIO(content), header=None, encoding='latin-1')
+        if not content:
+            raise HTTPException(status_code=400, detail="Uploaded file is empty.")
+
+        df = None
+        parse_errors = []
+        for encoding in ("utf-8", "utf-8-sig", "utf-16", "latin-1"):
+            try:
+                df = pd.read_csv(
+                    io.BytesIO(content),
+                    header=None,
+                    encoding=encoding,
+                    sep=None,
+                    engine="python",
+                )
+                break
+            except Exception as parse_error:
+                parse_errors.append(f"{encoding}: {parse_error}")
+
+        if df is None:
+            raise HTTPException(
+                status_code=400,
+                detail=f"Could not parse CSV file. Tried multiple encodings. Errors: {' | '.join(parse_errors)}",
+            )
+
+        df = df.dropna(how="all")
+        df = df.dropna(axis=1, how="all")
         print(f"DEBUG: CSV shape: {df.shape}")
+
+        if df.empty:
+            raise HTTPException(status_code=400, detail="CSV has no usable ECG values.")
         
-        # Ensure we have at least 187 columns to match the features our model was trained on
-        if df.shape[1] < 187:
-            raise HTTPException(status_code=400, detail=f"The CSV file must contain at least 187 columns (ECG readings). Found {df.shape[1]} columns.")
-        
-        # Extract features (first 187 columns)
-        # We process the first row as the input
-        features = df.iloc[0, :187].values.reshape(1, -1)
+        # Flatten to handle row-wise or column-wise ECG data and coerce non-numeric values.
+        values = df.to_numpy().flatten()
+        series = pd.to_numeric(pd.Series(values), errors="coerce").dropna().reset_index(drop=True)
+
+        if len(series) < 187:
+            raise HTTPException(
+                status_code=400,
+                detail=f"The CSV file must contain at least 187 numeric ECG values. Found {len(series)} values.",
+            )
+
+        features = series.iloc[:187].to_numpy(dtype=np.float32).reshape(1, -1)
         
         # Determine risk using model.predict_proba
         # The model was trained with 0=Normal, 1=Arrhythmia

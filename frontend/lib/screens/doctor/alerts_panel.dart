@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/data_provider.dart';
+import '../../theme/app_theme.dart';
+import '../../widgets/app_surfaces.dart';
+import '../../widgets/responsive_layout.dart';
 import 'patient_detail_screen.dart';
 
 class AlertsPanel extends StatelessWidget {
@@ -9,50 +12,72 @@ class AlertsPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final highRiskPatients = context.watch<DataProvider>().highRiskPatients;
+    final horizontalPadding = ResponsiveLayout.pageHorizontalPadding(context);
 
-    return Scaffold(
-      body: highRiskPatients.isEmpty
-          ? const Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+    if (highRiskPatients.isEmpty) {
+      return Padding(
+        padding: EdgeInsets.fromLTRB(horizontalPadding, 12, horizontalPadding, 24),
+        child: const Center(
+          child: EmptyStatePanel(
+            icon: Icons.check_circle_outline,
+            title: 'All Clear',
+            message: 'No patients are currently at high risk. Monitoring remains active.',
+          ),
+        ),
+      );
+    }
+
+    return ListView(
+      padding: EdgeInsets.fromLTRB(horizontalPadding, 8, horizontalPadding, 24),
+      children: [
+        SectionHeading(
+          title: 'Critical Alerts',
+          subtitle: '${highRiskPatients.length} patient(s) require immediate review.',
+        ),
+        const SizedBox(height: 14),
+        ...highRiskPatients.map((patient) {
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 12),
+            child: GlassCard(
+              borderColor: AppTheme.danger.withOpacity(0.55),
+              child: Row(
                 children: [
-                  Icon(Icons.check_circle_outline, size: 80, color: Colors.green),
-                  SizedBox(height: 16),
-                  Text('All Clear', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-                  Text('No patients are currently at HIGH risk.', style: TextStyle(color: Colors.grey)),
-                ],
-              ),
-            )
-          : ListView.builder(
-              padding: const EdgeInsets.all(16),
-              itemCount: highRiskPatients.length,
-              itemBuilder: (context, index) {
-                final patient = highRiskPatients[index];
-
-                return Card(
-                  color: Colors.red.shade50,
-                  margin: const EdgeInsets.only(bottom: 12),
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(color: Colors.red.shade200, width: 2),
-                    borderRadius: BorderRadius.circular(16),
+                  Container(
+                    width: 52,
+                    height: 52,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(14),
+                      color: AppTheme.danger.withOpacity(0.16),
+                    ),
+                    child: const Icon(Icons.warning_amber_rounded, color: AppTheme.danger, size: 30),
                   ),
-                  child: ListTile(
-                    contentPadding: const EdgeInsets.all(16),
-                    leading: const Icon(Icons.warning_amber_rounded, size: 48, color: Colors.red),
-                    title: Text('CRITICAL: ${patient.name}', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.red)),
-                    subtitle: Text('ID: ${patient.id} requires immediate attention.\nLast HR: ${patient.currentHeartRate} BPM'),
-                    isThreeLine: true,
-                    trailing: const Icon(Icons.chevron_right, color: Colors.red),
-                    onTap: () {
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('CRITICAL: ${patient.name}', style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w800, color: AppTheme.danger)),
+                        const SizedBox(height: 2),
+                        Text('ID ${patient.id}  •  HR ${patient.currentHeartRate} BPM', style: Theme.of(context).textTheme.bodyMedium),
+                      ],
+                    ),
+                  ),
+                  IconButton(
+                    tooltip: 'Open patient',
+                    onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (_) => PatientDetailScreen(patient: patient)),
                       );
                     },
+                    icon: const Icon(Icons.chevron_right_rounded),
                   ),
-                );
-              },
-            ),
+                ],
+              ),
+            )
+          );
+        }),
+      ],
     );
   }
 }
